@@ -17,8 +17,13 @@ label_map_util.tf = tf.compat.v1
 tf.gfile = tf.io.gfile
 from object_detection.utils import visualization_utils as viz_utils
 import matplotlib.pyplot as plt
+import collections
 #import tensorflow.compat.v1 as tf
 #tf.disable_v2_behavior()
+#try:
+    #from collections.abc import Mapping
+#except ImportError:
+    #from collections import Mapping
 
 # *** Backend operation
 
@@ -81,8 +86,10 @@ def detect_object(uploaded_image_path):
         agnostic_mode=False,
         line_thickness=1)
 
-    #plt.figure()
-    #plt.imshow(image_np_with_detections)
+    plt.figure()
+    plt.title("JIO OD")
+    plt.imshow(image_np_with_detections)
+    plt.show()
     #print('Done')
 
 
@@ -138,5 +145,8 @@ def add_header(response):
     return response
 
 
+#if __name__ == '__main__':
+    #app.run(debug=True)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=8080)
